@@ -167,5 +167,15 @@ void myPowerPoint::Open(System::String^ fn)
 
 void myPowerPoint::Close()
 {
+	if (ptPresentations != nullptr) {
+		System::Runtime::InteropServices::Marshal::ReleaseComObject(ptPresentations);
+	}
+	ptPresentations = nullptr;
 
+	if (ptPresentation != nullptr) {
+		System::Runtime::InteropServices::Marshal::ReleaseComObject(ptPresentation);
+	}
+	ptPresentation = nullptr;
+
+	
 }
