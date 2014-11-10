@@ -75,14 +75,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MyObject.cpp" />
-    <ClCompile Include="myPowerPoint.cpp" />
+    <ClCompile Include="SubFunction.cpp" />
+    <ClCompile Include="PowerPointObject.cpp" />
     <ClCompile Include="PowePointTask.cpp" />
     <ClCompile Include="PowerPointControl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyObject.h" />
-    <ClInclude Include="myPowerPoint.h" />
+    <ClInclude Include="SubFunction.h" />
+    <ClInclude Include="PowerPointObject.h" />
     <ClInclude Include="PowerPointControl.h" />
     <ClInclude Include="PowerPointTask.h" />
   </ItemGroup>

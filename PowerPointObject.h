@@ -1,10 +1,10 @@
 // -*-C++-*-
 /*!
- * @file  myPowerPoint.h
+ * @file  PowerPointObject.h
  * @brief PowerPointの操作
  */
-#ifndef MYPOWERPOINT_H
-#define MYPOWERPOINT_H
+#ifndef PowerPointObject_H
+#define PowerPointObject_H
 
 
 #define PowerPoint   Microsoft::Office::Interop::PowerPoint
@@ -14,22 +14,22 @@
 #include <vector>
 #include <windows.h>
 
-#include "MyObject.h"
+#include "SubFunction.h"
 
 
 /**
- * @class myPowerPoint
+ * @class PowerPointObject
 *@brief PowerPointを操作するクラス
 */
-ref class myPowerPoint
+ref class PowerPointObject
 {
 public:
 	/**
 	*@brief コンストラクタ
 	*/
-	myPowerPoint();
+	PowerPointObject();
 
-	static myPowerPoint ^Obj; /**<　@brief  */
+	static PowerPointObject ^Obj; /**<　@brief  */
 
 	
 	/**
@@ -46,39 +46,39 @@ public:
 	/**
 	*@brief スライドショー開始
 	*/
-	void Run();
+	void run();
 
 	/**
 	*@brief スライドショー開始の終了
 	*/
-	void End();
+	void end();
 
 	/**
 	*@brief スライド番号の変更
 	*/
-	bool GotoSlide(int num);
+	bool gotoSlide(int num);
 
 	
 
 	/**
 	*@brief 次のスライドを表示
 	*/
-	void Next();
+	void next();
 
 	/**
 	*@brief 前のスライドを表示
 	*/
-	void Previous();
+	void previous();
 
 	/**
 	*@brief ペンで描画
 	*/
-	void DrawLine(int bx, int by, int ex, int ey);
+	void drawLine(int bx, int by, int ex, int ey);
 
 	/**
 	*@brief ペンを消去
 	*/
-	void EraseDrawing();
+	void eraseDrawing();
 	
 	
 

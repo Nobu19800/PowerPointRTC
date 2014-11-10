@@ -107,12 +107,12 @@ void PowerPointControl::ConfigUpdate()
 	
 	if(sfn ==  "NewFile")
 	{
-		myPowerPoint::Obj->Open("");
+		PowerPointObject::Obj->Open("");
 	}
-	else if(myPowerPoint::Obj->filename != tfn)
+	else if(PowerPointObject::Obj->filename != tfn)
 	{
 		
-		myPowerPoint::Obj->Open(tfn);
+		PowerPointObject::Obj->Open(tfn);
 		 
 		
 	}
@@ -179,8 +179,8 @@ RTC::ReturnCode_t PowerPointControl::onShutdown(RTC::UniqueId ec_id)
 
 RTC::ReturnCode_t PowerPointControl::onActivated(RTC::UniqueId ec_id)
 {
-	myPowerPoint::Obj->Run();
-	myPowerPoint::Obj->GotoSlide(SlideFileInitialNumber);
+	PowerPointObject::Obj->run();
+	PowerPointObject::Obj->gotoSlide(SlideFileInitialNumber);
 	slidenum = SlideFileInitialNumber;
   return RTC::RTC_OK;
 }
@@ -188,7 +188,7 @@ RTC::ReturnCode_t PowerPointControl::onActivated(RTC::UniqueId ec_id)
 
 RTC::ReturnCode_t PowerPointControl::onDeactivated(RTC::UniqueId ec_id)
 {
-	myPowerPoint::Obj->End();
+	PowerPointObject::Obj->end();
   return RTC::RTC_OK;
 }
 
@@ -201,12 +201,12 @@ RTC::ReturnCode_t PowerPointControl::onExecute(RTC::UniqueId ec_id)
 
 	if(SlideNumberInRelative == 0)
 	{
-		if(myPowerPoint::Obj->GotoSlide(m_SlideNumberIn.data))
+		if(PowerPointObject::Obj->gotoSlide(m_SlideNumberIn.data))
 			slidenum = m_SlideNumberIn.data;
 	}
 	else
 	{
-		if(myPowerPoint::Obj->GotoSlide(slidenum+m_SlideNumberIn.data))
+		if(PowerPointObject::Obj->gotoSlide(slidenum+m_SlideNumberIn.data))
 			slidenum += m_SlideNumberIn.data;
 	}
 	m_SlideNumberOut.data = slidenum;
@@ -221,14 +221,14 @@ RTC::ReturnCode_t PowerPointControl::onExecute(RTC::UniqueId ec_id)
 	{
 		for(int i=0;i < m_EffectNumberIn.data;i++)
 		{
-			myPowerPoint::Obj->Next();
+			PowerPointObject::Obj->next();
 		}
 	}
 	else
 	{
 		for(int i=0;i < -m_EffectNumberIn.data;i++)
 		{
-			myPowerPoint::Obj->Previous();
+			PowerPointObject::Obj->previous();
 		}
 	}
 	
@@ -241,9 +241,9 @@ RTC::ReturnCode_t PowerPointControl::onExecute(RTC::UniqueId ec_id)
 	  for(int i=0;i < len/2;i++)
 	  {
 		  if(i == 0)
-			 myPowerPoint::Obj->DrawLine(m_Pen.data[i*2],m_Pen.data[i*2+1],m_Pen.data[i*2],m_Pen.data[i*2+1]);
+			 PowerPointObject::Obj->drawLine(m_Pen.data[i*2],m_Pen.data[i*2+1],m_Pen.data[i*2],m_Pen.data[i*2+1]);
 		  else
-			 myPowerPoint::Obj->DrawLine(m_Pen.data[i*2-2],m_Pen.data[i*2-1],m_Pen.data[i*2],m_Pen.data[i*2+1]);
+			 PowerPointObject::Obj->drawLine(m_Pen.data[i*2-2],m_Pen.data[i*2-1],m_Pen.data[i*2],m_Pen.data[i*2+1]);
 			 
 	  }
   }

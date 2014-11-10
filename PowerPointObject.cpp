@@ -1,18 +1,18 @@
 // -*-C++-*-
 /*!
- * @file  myPowerPoint.cpp
+ * @file  PowerPointObject.cpp
  * @brief PowerPointÇÃëÄçÏ
  *
  */
 
-#include "myPowerPoint.h"
+#include "PowerPointObject.h"
 
 
 #include <locale.h>
 
 
 
-myPowerPoint::myPowerPoint()
+PowerPointObject::PowerPointObject()
 {
 	ptApplication = nullptr;
 	ptPresentations = nullptr;
@@ -27,7 +27,7 @@ myPowerPoint::myPowerPoint()
 	
 }
 
-void myPowerPoint::DrawLine(int bx, int by, int ex, int ey)
+void PowerPointObject::drawLine(int bx, int by, int ex, int ey)
 {
 	if(ptSlideShowView != nullptr)
 	{
@@ -38,7 +38,7 @@ void myPowerPoint::DrawLine(int bx, int by, int ex, int ey)
 	}
 }
 
-void myPowerPoint::EraseDrawing()
+void PowerPointObject::eraseDrawing()
 {
 	if(ptSlideShowView != nullptr)
 	{
@@ -46,7 +46,7 @@ void myPowerPoint::EraseDrawing()
 	}
 }
 
-bool myPowerPoint::GotoSlide(int num)
+bool PowerPointObject::gotoSlide(int num)
 {
 	
 	if(ptSlideShowView != nullptr)
@@ -69,7 +69,7 @@ bool myPowerPoint::GotoSlide(int num)
 
 
 
-void myPowerPoint::Run()
+void PowerPointObject::run()
 {
 	
 	if(ptSlideShowView == nullptr)
@@ -79,7 +79,7 @@ void myPowerPoint::Run()
 	}
 }
 
-void myPowerPoint::End()
+void PowerPointObject::end()
 {
 	
 	if(ptSlideShowView != nullptr)
@@ -98,7 +98,7 @@ void myPowerPoint::End()
 	}
 }
 
-void myPowerPoint::Next()
+void PowerPointObject::next()
 {
 	
 	if(ptSlideShowView != nullptr)
@@ -107,7 +107,7 @@ void myPowerPoint::Next()
 	}
 }
 
-void myPowerPoint::Previous()
+void PowerPointObject::previous()
 {
 	
 	if(ptSlideShowView != nullptr)
@@ -117,7 +117,7 @@ void myPowerPoint::Previous()
 }
 
 
-void myPowerPoint::Open(System::String^ fn)
+void PowerPointObject::Open(System::String^ fn)
 {
 	if(filename == fn)
 		return;
@@ -165,17 +165,7 @@ void myPowerPoint::Open(System::String^ fn)
 	}
 }
 
-void myPowerPoint::Close()
+void PowerPointObject::Close()
 {
-	if (ptPresentations != nullptr) {
-		System::Runtime::InteropServices::Marshal::ReleaseComObject(ptPresentations);
-	}
-	ptPresentations = nullptr;
 
-	if (ptPresentation != nullptr) {
-		System::Runtime::InteropServices::Marshal::ReleaseComObject(ptPresentation);
-	}
-	ptPresentation = nullptr;
-
-	
 }

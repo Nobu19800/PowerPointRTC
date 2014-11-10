@@ -28,7 +28,7 @@
 // <rtc-template block="consumer_stub_h">
 #include "BasicDataTypeStub.h"
 
-#include "myPowerPoint.h"
+#include "PowerPointObject.h"
 #include "PowerPointTask.h"
 
 // </rtc-template>

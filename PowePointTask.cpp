@@ -8,7 +8,7 @@
 
 
 #include "PowerPointTask.h"
-#include "myPowerPoint.h"
+#include "PowerPointObject.h"
 
 
 PowerPointTask::PowerPointTask()
@@ -23,13 +23,13 @@ PowerPointTask::PowerPointTask()
 int PowerPointTask::svc()
 {
 	
-	myPowerPoint::Obj = gcnew myPowerPoint();
+	PowerPointObject::Obj = gcnew PowerPointObject();
 	std::string filePath = "";
 	coil::Properties& prop(::RTC::Manager::instance().getConfig());
 	getProperty(prop, "powerpoint.filename", filePath);
 	//filePath = Replace(filePath, "/", "\\");
 
-	myPowerPoint::Obj->Open(gcnew System::String(filePath.c_str()));
+	PowerPointObject::Obj->Open(gcnew System::String(filePath.c_str()));
 	
 	return 0;
 }
