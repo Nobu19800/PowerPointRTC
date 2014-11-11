@@ -297,6 +297,25 @@ class PowerPointControl
 };
 
 
+//コンフィギュレーションパラメータが更新されたときのコールバック
+class PowerPointConfigUpdateParam
+    : public RTC::ConfigurationSetListener
+{
+public:
+    PowerPointConfigUpdateParam(PowerPointControl *e_rtc)
+    {
+		m_rtc = e_rtc;
+    }
+    void operator()(const coil::Properties& config_set)
+	{
+		
+		m_rtc->ConfigUpdate();
+		
+    }
+	PowerPointControl *m_rtc;
+
+};
+
 extern "C"
 {
   DLL_EXPORT void PowerPointControlInit(RTC::Manager* manager);
