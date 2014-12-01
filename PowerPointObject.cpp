@@ -31,8 +31,13 @@ void PowerPointObject::drawLine(int bx, int by, int ex, int ey)
 {
 	if(ptSlideShowView != nullptr)
 	{
-		
-		ptSlideShowView->DrawLine(bx, by, ex, ey);
+		HWND c_window = GetDesktopWindow();
+		RECT rect;
+
+		GetWindowRect(c_window, &rect);
+
+		float tmp = ptPresentation->Slides[1]->CustomLayout->Height/rect.bottom;
+		ptSlideShowView->DrawLine(bx*tmp, by*tmp, ex*tmp, ey*tmp);
 		
 		
 	}
