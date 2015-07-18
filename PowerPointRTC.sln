@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PowerPointRTC", "PowerPointRTC.vcxproj", "{7D47A299-8159-4B40-A7E2-821DD5A05057}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual C++ Express 2013
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PowerPointControlComp", "PowerPointControlComp.vcxproj", "{7D47A299-8159-4B40-A7E2-821DD5A05057}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PowerPointControl", "PowerPointControl.vcxproj", "{F136B2F5-B8B6-44A7-8F68-344F8385D57E}"
 EndProject

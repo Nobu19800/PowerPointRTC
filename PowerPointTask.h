@@ -16,7 +16,10 @@
 #include <rtm/Manager.h>
 #include <rtm/PeriodicExecutionContext.h>
 
+#include "PowerPointControl.h"
 
+
+class PowerPointControl;
 
 /*!
  * @class PowerPointTask
@@ -29,11 +32,12 @@ public:
 		/**
 		*@brief コンストラクタ
 		*/
-		PowerPointTask();
+		PowerPointTask(PowerPointControl *m_rtc);
 		/**
 		*@brief スレッドを実行
 		*/
 		virtual int svc();
+		PowerPointControl *mrtc;
 		
 
 

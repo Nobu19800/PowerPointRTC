@@ -31,6 +31,10 @@
 #include "PowerPointObject.h"
 #include "PowerPointTask.h"
 
+
+class PowerPointTask;
+class PowerPointControl;
+
 // </rtc-template>
 
 using namespace RTC;
@@ -64,6 +68,7 @@ class PowerPointControl
    *@brief ファイル名のコンフィギュレーションパラメータ変更の関数
    * @param FP ファイル名
    */
+   std::string getFileName();
    void SetFilePath(std::string FP);
 
   // <rtc-template block="public_attribute">

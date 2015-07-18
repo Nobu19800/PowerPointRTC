@@ -18,7 +18,7 @@ static const char* powerpointcontrol_spec[] =
     "description",       "PowerPoint Control Component",
     "version",           "1.0.0",
     "vendor",            "Miyamoto Nobuhiko",
-    "category",          "TES",
+    "category",          "Office",
     "activity_type",     "PERIODIC",
     "kind",              "DataFlowComponent",
     "max_instance",      "1",
@@ -54,8 +54,7 @@ PowerPointControl::PowerPointControl(RTC::Manager* manager)
 
     // </rtc-template>
 {
-	pt = new PowerPointTask();
-	pt->activate();
+	
 }
 
 /*!
@@ -102,6 +101,12 @@ void PowerPointControl::ConfigUpdate()
 	
 }
 
+std::string PowerPointControl::getFileName()
+{
+
+	return file_path;
+}
+
 
 RTC::ReturnCode_t PowerPointControl::onInitialize()
 {
@@ -127,10 +132,14 @@ RTC::ReturnCode_t PowerPointControl::onInitialize()
   bindParameter("SlideFileInitialNumber", SlideFileInitialNumber, "1");
   bindParameter("SlideNumberInRelative", SlideNumberInRelative, "1");
 
-  std::string filePath = "";
+  /*std::string filePath = "";
   coil::Properties& prop(::RTC::Manager::instance().getConfig());
   getProperty(prop, "powerpoint.filename", filePath);
-  SetFilePath(filePath);
+  SetFilePath(filePath);*/
+
+  this->m_configsets.update("default", "file_path");
+  pt = new PowerPointTask(this);
+  pt->activate();
 
 
   this->addConfigurationSetListener(ON_SET_CONFIG_SET, new PowerPointConfigUpdateParam(this));
