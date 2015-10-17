@@ -76,10 +76,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PowePointTask.cpp" />
     <ClCompile Include="PowerPointControl.cpp" />
     <ClCompile Include="PowerPointControlComp.cpp" />
     <ClCompile Include="PowerPointObject.cpp" />
+    <ClCompile Include="PowerPointTask.cpp" />
     <ClCompile Include="SubFunction.cpp" />
   </ItemGroup>
   <ItemGroup>

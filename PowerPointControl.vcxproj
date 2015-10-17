@@ -77,9 +77,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PowerPointTask.cpp" />
     <ClCompile Include="SubFunction.cpp" />
     <ClCompile Include="PowerPointObject.cpp" />
-    <ClCompile Include="PowePointTask.cpp" />
     <ClCompile Include="PowerPointControl.cpp" />
   </ItemGroup>
   <ItemGroup>

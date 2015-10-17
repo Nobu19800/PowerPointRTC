@@ -65,10 +65,15 @@ class PowerPointControl
   void PowerPointControl::ConfigUpdate();
 
   /**
+  *@brief ファイル名の取得の関数
+  * @return ファイル名
+  */
+   std::string getFileName();
+
+   /**
    *@brief ファイル名のコンフィギュレーションパラメータ変更の関数
    * @param FP ファイル名
    */
-   std::string getFileName();
    void SetFilePath(std::string FP);
 
   // <rtc-template block="public_attribute">
@@ -79,14 +84,9 @@ class PowerPointControl
   
   // </rtc-template>
 
-  /***
-   *
-   * The initialize action (on CREATED->ALIVE transition)
-   * formaer rtc_init_entry() 
-   *
+   /**
+   *@brief 初期化処理用コールバック関数
    * @return RTC::ReturnCode_t
-   * 
-   * 
    */
    virtual RTC::ReturnCode_t onInitialize();
 
@@ -127,42 +127,24 @@ class PowerPointControl
    */
   // virtual RTC::ReturnCode_t onShutdown(RTC::UniqueId ec_id);
 
-  /***
-   *
-   * The activated action (Active state entry action)
-   * former rtc_active_entry()
-   *
-   * @param ec_id target ExecutionContext Id
-   *
-   * @return RTC::ReturnCode_t
-   * 
-   * 
+   /**
+   *@brief 活性化時のコールバック関数
+   * @param ec_id
+   * @return
    */
    virtual RTC::ReturnCode_t onActivated(RTC::UniqueId ec_id);
 
-  /***
-   *
-   * The deactivated action (Active state exit action)
-   * former rtc_active_exit()
-   *
+   /**
+   *@brief 不活性化時のコールバック関数
    * @param ec_id target ExecutionContext Id
-   *
    * @return RTC::ReturnCode_t
-   * 
-   * 
    */
    virtual RTC::ReturnCode_t onDeactivated(RTC::UniqueId ec_id);
 
-  /***
-   *
-   * The execution action that is invoked periodically
-   * former rtc_active_do()
-   *
+   /**
+   *@brief 周期処理用コールバック関数
    * @param ec_id target ExecutionContext Id
-   *
    * @return RTC::ReturnCode_t
-   * 
-   * 
    */
    virtual RTC::ReturnCode_t onExecute(RTC::UniqueId ec_id);
 

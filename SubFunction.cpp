@@ -9,20 +9,13 @@
 
 using namespace std;
 
-std::string Replace( std::string String1, std::string String2, std::string String3 )
-{
-    std::string::size_type  Pos( String1.find( String2 ) );
-
-    while( Pos != std::string::npos )
-    {
-        String1.replace( Pos, String2.length(), String3 );
-        Pos = String1.find( String2, Pos + String3.length() );
-    }
-
-    return String1;
-}
 
 
+/**
+*@brief セルの番号を数値に変換する関数
+* @param m_str セルの番号(アルファベット)
+* @return 対応する数値
+*/
 int convertStrToVal(std::string m_str)
 {
 	char m_c = m_str.c_str()[0] - 64;
@@ -46,6 +39,11 @@ int convertStrToVal(std::string m_str)
 	 
 }
 
+/**
+*@brief System::Stringをstd::stringに変換する関数
+* @param s 変換前の文字列
+* @return 変換後の文字列
+*/
 std::string MarshalString ( System::String ^ s) {
    using namespace System::Runtime::InteropServices;
    const char* chars = 
@@ -56,13 +54,3 @@ std::string MarshalString ( System::String ^ s) {
    return os;
 }
 
-vector<string> split(const string &str, const string &delim){
-  vector<string> res;
-  size_t current = 0, found, delimlen = delim.size();
-  while((found = str.find(delim, current)) != string::npos){
-    res.push_back(string(str, current, found - current));
-    current = found + delimlen;
-  }
-  res.push_back(string(str, current, str.size() - current));
-  return res;
-}

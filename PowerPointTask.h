@@ -35,6 +35,7 @@ public:
 		PowerPointTask(PowerPointControl *m_rtc);
 		/**
 		*@brief スレッドを実行
+		* @return 
 		*/
 		virtual int svc();
 		PowerPointControl *mrtc;

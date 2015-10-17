@@ -11,7 +11,9 @@
 #include <locale.h>
 
 
-
+/**
+*@brief PowerPointを操作するクラスのコンストラクタ
+*/
 PowerPointObject::PowerPointObject()
 {
 	ptApplication = nullptr;
@@ -27,6 +29,9 @@ PowerPointObject::PowerPointObject()
 	
 }
 
+/**
+*@brief ペンで描画
+*/
 void PowerPointObject::drawLine(int bx, int by, int ex, int ey)
 {
 	if(ptSlideShowView != nullptr)
@@ -43,6 +48,9 @@ void PowerPointObject::drawLine(int bx, int by, int ex, int ey)
 	}
 }
 
+/**
+*@brief ペンを消去
+*/
 void PowerPointObject::eraseDrawing()
 {
 	if(ptSlideShowView != nullptr)
@@ -51,6 +59,9 @@ void PowerPointObject::eraseDrawing()
 	}
 }
 
+/**
+*@brief スライド番号の変更
+*/
 bool PowerPointObject::gotoSlide(int num)
 {
 	
@@ -73,7 +84,9 @@ bool PowerPointObject::gotoSlide(int num)
 }
 
 
-
+/**
+*@brief スライドショー開始
+*/
 void PowerPointObject::run()
 {
 	
@@ -84,6 +97,9 @@ void PowerPointObject::run()
 	}
 }
 
+/**
+*@brief スライドショー開始の終了
+*/
 void PowerPointObject::end()
 {
 	
@@ -103,6 +119,9 @@ void PowerPointObject::end()
 	}
 }
 
+/**
+*@brief 次のスライドを表示
+*/
 void PowerPointObject::next()
 {
 	
@@ -112,6 +131,9 @@ void PowerPointObject::next()
 	}
 }
 
+/**
+*@brief 前のスライドを表示
+*/
 void PowerPointObject::previous()
 {
 	
@@ -121,7 +143,10 @@ void PowerPointObject::previous()
 	}
 }
 
-
+/**
+*@brief PowerPointファイルを開く関数
+* @param fn ファイルパス
+*/
 void PowerPointObject::Open(System::String^ fn)
 {
 	if(filename == fn)
@@ -170,7 +195,18 @@ void PowerPointObject::Open(System::String^ fn)
 	}
 }
 
+/**
+*@brief COMオブジェクトを解放する関数
+*/
 void PowerPointObject::Close()
 {
+	if (ptPresentations != nullptr) {
+		System::Runtime::InteropServices::Marshal::ReleaseComObject(ptPresentations);
+	}
+	ptPresentations = nullptr;
 
+	if (ptPresentation != nullptr) {
+		System::Runtime::InteropServices::Marshal::ReleaseComObject(ptPresentation);
+	}
+	ptPresentation = nullptr;
 }

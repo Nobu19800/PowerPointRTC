@@ -11,6 +11,9 @@
 #include "PowerPointObject.h"
 
 
+/**
+*@brief PowerPointの起動、COMの参照をするスレッドのコンストラクタ
+*/
 PowerPointTask::PowerPointTask(PowerPointControl *m_rtc)
 {
 	mrtc = m_rtc;
@@ -19,7 +22,10 @@ PowerPointTask::PowerPointTask(PowerPointControl *m_rtc)
 
 
 
-
+/**
+*@brief スレッドを実行
+* @return
+*/
 int PowerPointTask::svc()
 {
 	

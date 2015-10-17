@@ -41,8 +41,8 @@ static const char* powerpointcontrol_spec[] =
 
 
 /*!
- * @brief constructor
- * @param manager Maneger Object
+ * @brief PowerPointControlComponentのコンストラクタ
+ * @param manager マネージャオブジェクト
  */
 PowerPointControl::PowerPointControl(RTC::Manager* manager)
     // <rtc-template block="initializer">
@@ -58,13 +58,17 @@ PowerPointControl::PowerPointControl(RTC::Manager* manager)
 }
 
 /*!
- * @brief destructor
- */
+* @brief PowerPointControlComponentのデストラクタ
+* @param manager マネージャオブジェクト
+*/
 PowerPointControl::~PowerPointControl()
 {
 }
 
-
+/**
+*@brief ファイル名のコンフィギュレーションパラメータ変更の関数
+* @param FP ファイル名
+*/
 void PowerPointControl::SetFilePath(std::string FP)
 {
 
@@ -79,15 +83,18 @@ void PowerPointControl::SetFilePath(std::string FP)
 	
 }
 
-
+/**
+* @brief コンフィギュレーションパラメータが更新されたときにファイルを再読み込みする関数
+*/
 void PowerPointControl::ConfigUpdate()
 {
 	this->m_configsets.update("default","file_path");
-	std::string sfn = Replace(file_path, "/", "\\");
-	System::String ^tfn = gcnew System::String(sfn.c_str());
+	//std::string sfn = Replace(file_path, "/", "\\");
+	coil::replaceString(file_path, "/", "\\");
+	System::String ^tfn = gcnew System::String(file_path.c_str());
 	//System::Console::WriteLine(tfn);
 	
-	if(sfn ==  "NewFile")
+	if (file_path == "NewFile")
 	{
 		PowerPointObject::Obj->Open("");
 	}
@@ -101,13 +108,21 @@ void PowerPointControl::ConfigUpdate()
 	
 }
 
+
+/**
+*@brief ファイル名の取得の関数
+* @return ファイル名
+*/
 std::string PowerPointControl::getFileName()
 {
 
 	return file_path;
 }
 
-
+/**
+*@brief 初期化処理用コールバック関数
+* @return RTC::ReturnCode_t
+*/
 RTC::ReturnCode_t PowerPointControl::onInitialize()
 {
   // Registration: InPort/OutPort/Service
@@ -168,7 +183,11 @@ RTC::ReturnCode_t PowerPointControl::onShutdown(RTC::UniqueId ec_id)
 }
 */
 
-
+/**
+*@brief 活性化時のコールバック関数
+* @param ec_id
+* @return
+*/
 RTC::ReturnCode_t PowerPointControl::onActivated(RTC::UniqueId ec_id)
 {
 	PowerPointObject::Obj->run();
@@ -177,14 +196,22 @@ RTC::ReturnCode_t PowerPointControl::onActivated(RTC::UniqueId ec_id)
   return RTC::RTC_OK;
 }
 
-
+/**
+*@brief 不活性化時のコールバック関数
+* @param ec_id target ExecutionContext Id
+* @return RTC::ReturnCode_t
+*/
 RTC::ReturnCode_t PowerPointControl::onDeactivated(RTC::UniqueId ec_id)
 {
 	PowerPointObject::Obj->end();
   return RTC::RTC_OK;
 }
 
-
+/**
+*@brief 周期処理用コールバック関数
+* @param ec_id target ExecutionContext Id
+* @return RTC::ReturnCode_t
+*/
 RTC::ReturnCode_t PowerPointControl::onExecute(RTC::UniqueId ec_id)
 {
   if(m_SlideNumberInIn.isNew())

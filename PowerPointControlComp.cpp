@@ -13,7 +13,10 @@
 #include <stdlib.h>
 #include "PowerPointControl.h"
 
-
+/**
+*@brief RTC初期化
+* @param manager マネージャオブジェクト
+*/
 void MyModuleInit(RTC::Manager* manager)
 {
   PowerPointControlInit(manager);
@@ -71,6 +74,11 @@ void MyModuleInit(RTC::Manager* manager)
   return;
 }
 
+/**
+*@brief メイン関数
+* @param argc コマンドライン引数の数
+* @param argv コマンドライン引数
+*/
 int main (int argc, char** argv)
 {
   RTC::Manager* manager;
